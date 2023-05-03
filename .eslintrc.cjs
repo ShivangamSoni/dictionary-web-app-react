@@ -21,4 +21,5 @@ module.exports = {
     'react/react-in-jsx-scope': 0,
     '@typescript-eslint/no-shadow': 0,
   },
+  ignorePatterns: ['vite.config.ts'],
 };
