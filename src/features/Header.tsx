@@ -54,6 +54,9 @@ export default function Header() {
           htmlFor="themeSwitcher"
           className="relative inline-flex items-center cursor-pointer"
         >
+          <span className="sr-only">
+            Switch Theme to: {mode === 'dark' ? 'Light' : 'Dark'}
+          </span>
           <input
             type="checkbox"
             id="themeSwitcher"
