@@ -5,8 +5,11 @@ import { BsFillPlayFill as PlayIcon } from 'react-icons/bs';
 import { WordResponse } from '@customTypes/api';
 
 import ExternalLink from '@components/ExternalLink';
+import useSearch from '@store/search';
 
 function SynAntList({ label, items }: { label: ReactNode; items: string[] }) {
+  const { setSearch } = useSearch();
+
   return (
     <div className="grid grid-cols-[auto_1fr] gap-4">
       {label}
@@ -17,6 +20,7 @@ function SynAntList({ label, items }: { label: ReactNode; items: string[] }) {
               type="button"
               className="hover:underline"
               title={`Search ${item}`}
+              onClick={() => setSearch(item)}
             >
               {item}
             </button>
@@ -82,6 +86,7 @@ export default function WordDetails({
               className="flex items-center justify-center rounded-full text-4xl sm:text-5xl md:text-6xl p-3 md:p-4 bg-primary-purple bg-opacity-20 text-primary-purple transition-all hover:bg-opacity-100 hover:text-white"
               onClick={() => audioRef.current?.play()}
             >
+              <span className="sr-only">Word Pronunciation</span>
               <PlayIcon />
             </button>
           </div>
