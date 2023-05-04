@@ -27,6 +27,15 @@
       ],
       "@components/*": [
         "src/components/*"
+      ],
+      "@api/*": [
+        "src/api/*"
+      ],
+      "@customTypes/*": [
+        "src/customTypes/*"
+      ],
+      "@store/*": [
+        "src/store/*"
       ]
     }
   },
