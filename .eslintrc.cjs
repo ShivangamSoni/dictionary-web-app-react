@@ -19,7 +19,10 @@ module.exports = {
   rules: {
     'react-refresh/only-export-components': 'warn',
     'react/react-in-jsx-scope': 0,
+    'react/jsx-props-no-spreading': 0,
     '@typescript-eslint/no-shadow': 0,
+    'jsx-a11y/label-has-associated-control': 0,
+    'jsx-a11y/media-has-caption': 0,
   },
   ignorePatterns: ['vite.config.ts'],
 };
