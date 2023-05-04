@@ -1,6 +1,6 @@
 import { useState, ComponentProps } from 'react';
 
-import { FiExternalLink as ExternalLinkIcon } from 'react-icons/Fi';
+import { HiOutlineExternalLink as ExternalLinkIcon } from 'react-icons/hi';
 
 export default function ExternalLink({
   children,
