@@ -64,7 +64,7 @@ export default function Header() {
             checked={mode === 'dark'}
             onChange={toggleMode}
           />
-          <div className="w-9 h-5 bg-grey-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary-purple hover:bg-primary-purple" />
+          <span className="w-9 h-5 bg-grey-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary-purple hover:bg-primary-purple" />
           <span className="ml-3">
             <ThemeIcon
               className={`text-xl ${
