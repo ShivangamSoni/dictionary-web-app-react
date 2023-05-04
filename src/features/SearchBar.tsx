@@ -1,6 +1,7 @@
 import { object, string, InferType } from 'yup';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import useSearch from '@store/search';
 
 const FormSchema = object({
   search: string().required('Whoops, can’t be empty'),
@@ -8,6 +9,7 @@ const FormSchema = object({
 type FormState = InferType<typeof FormSchema>;
 
 export default function SearchBar() {
+  const { setSearch } = useSearch();
   const {
     register,
     handleSubmit,
@@ -17,10 +19,9 @@ export default function SearchBar() {
     resolver: yupResolver(FormSchema),
   });
 
-  function submitHandler(data: FormState) {
-    // TODO: set Search term & trigger new Query
-    console.log(data);
-    reset();
+  function submitHandler({ search }: FormState) {
+    reset({ search: '' }, { keepErrors: false });
+    setSearch(search);
   }
 
   const isError = Object.entries(errors).length > 0;

@@ -1,14 +1,15 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { IoMoonOutline as ThemeIcon } from 'react-icons/io5';
+
+import useThemeStore from '@store/theme';
 
 import Select from '@components/Select';
 
 export default function Header() {
-  const [font, setFont] = useState<'sansSerif' | 'sans' | 'mono'>('sansSerif');
-  const [mode, setMode] = useState<'dark' | 'light'>('light');
+  const { font, mode, setThemeFont, setThemeMode } = useThemeStore();
 
   function toggleMode() {
-    setMode((prev) => (prev === 'dark' ? 'light' : 'dark'));
+    setThemeMode(mode === 'dark' ? 'light' : 'dark');
   }
 
   useEffect(() => {
@@ -30,7 +31,7 @@ export default function Header() {
         <Select
           id="fontSwitcher"
           value={font}
-          onChange={(value) => setFont(value as typeof font)}
+          onChange={(value) => setThemeFont(value as typeof font)}
           options={[
             {
               value: 'sansSerif',
