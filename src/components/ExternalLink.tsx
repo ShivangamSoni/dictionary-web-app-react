@@ -6,20 +6,22 @@ export default function ExternalLink({
   children,
   ...rest
 }: ComponentProps<'a'>) {
-  const [hover, setHover] = useState(false);
+  const [hoverFocus, setHoverFocus] = useState(false);
 
   return (
     <a
-      className="inline-flex items-center gap-2 peer"
+      className="inline-flex items-center gap-2 peer outline-none"
       {...rest}
       target="_blank"
       rel="noreferrer"
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
+      onMouseEnter={() => setHoverFocus(true)}
+      onMouseLeave={() => setHoverFocus(false)}
+      onFocus={() => setHoverFocus(true)}
+      onBlur={() => setHoverFocus(false)}
     >
       <span
         className={`${
-          hover ? 'border-b border-grey-100 dark:border-grey-200' : ''
+          hoverFocus ? 'border-b border-grey-100 dark:border-grey-200' : ''
         }`}
       >
         {children}

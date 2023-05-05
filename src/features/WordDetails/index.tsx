@@ -18,7 +18,7 @@ function SynAntList({ label, items }: { label: ReactNode; items: string[] }) {
           <li className="inline" key={item}>
             <button
               type="button"
-              className="hover:underline"
+              className="outline-none hover:underline focus:underline"
               title={`Search ${item}`}
               onClick={() => setSearch(item)}
             >
@@ -83,7 +83,7 @@ export default function WordDetails({
             <audio src={audio} ref={audioRef} />
             <button
               type="button"
-              className="flex items-center justify-center rounded-full text-4xl sm:text-5xl md:text-6xl p-3 md:p-4 bg-primary-purple bg-opacity-20 text-primary-purple transition-all hover:bg-opacity-100 hover:text-white"
+              className="flex items-center justify-center rounded-full text-4xl sm:text-5xl md:text-6xl p-3 md:p-4 bg-primary-purple bg-opacity-20 text-primary-purple transition-all outline-none hover:bg-opacity-100 hover:text-white focus:bg-opacity-100 focus:text-white"
               onClick={() => audioRef.current?.play()}
             >
               <span className="sr-only">Word Pronunciation</span>
