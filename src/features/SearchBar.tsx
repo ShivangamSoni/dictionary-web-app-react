@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+
 import { object, string, InferType } from 'yup';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -9,22 +11,25 @@ const FormSchema = object({
 type FormState = InferType<typeof FormSchema>;
 
 export default function SearchBar() {
-  const { setSearch } = useSearch();
+  const { search, setSearch } = useSearch();
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors },
+    setValue,
   } = useForm<FormState>({
     resolver: yupResolver(FormSchema),
   });
 
   function submitHandler({ search }: FormState) {
-    reset({ search: '' }, { keepErrors: false });
     setSearch(search);
   }
 
   const isError = Object.entries(errors).length > 0;
+
+  useEffect(() => {
+    setValue('search', search);
+  }, [search, setValue]);
 
   return (
     <form onSubmit={handleSubmit(submitHandler)}>
