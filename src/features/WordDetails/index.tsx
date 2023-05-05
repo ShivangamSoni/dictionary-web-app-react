@@ -13,7 +13,7 @@ function SynAntList({ label, items }: { label: ReactNode; items: string[] }) {
   return (
     <div className="grid grid-cols-[auto_1fr] gap-4">
       {label}
-      <ul className="flex gap-1 text-primary-purple font-semibold">
+      <ul className="flex flex-wrap gap-1 text-primary-purple font-semibold">
         {items.map((item) => (
           <li className="inline" key={item}>
             <button
