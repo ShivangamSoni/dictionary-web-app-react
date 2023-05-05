@@ -43,8 +43,19 @@ export default function Dictionary() {
     isError,
     error,
   } = useQuery<WordResponse[], AxiosError<WordErrorResponse>>({
-    queryKey: ['definition', search],
-    queryFn: () => getDefinition(search),
+    queryKey: ['definition', search.toLowerCase()],
+    queryFn: () => getDefinition(search.toLowerCase()),
+    staleTime: 1000 * 60 * 60 * 24, // Keep Fresh for 1 Day
+    cacheTime: 1000 * 60 * 15, // Keep in Cache for 15 Minutes
+    // Don't Retry or Refetch on 404
+    retry: (failureCount, error) =>
+      error.response?.status !== 404 && failureCount < 3,
+    refetchOnWindowFocus: (query): boolean =>
+      query.isActive() && error?.response?.status !== 404,
+    refetchOnMount: (query): boolean =>
+      query.isActive() && error?.response?.status !== 404,
+    refetchOnReconnect: (query): boolean =>
+      query.isActive() && error?.response?.status !== 404,
   });
 
   return (
